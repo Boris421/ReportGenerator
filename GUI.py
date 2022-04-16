@@ -241,8 +241,8 @@ class GUI:
 
         def update_use_image_time(*ars):
             cur_index = self._image_list_box.curIndex
-            file_name = self._image_list_box.get(cur_index)
             if cur_index is not None:
+                file_name = self._image_list_box.get(cur_index)
                 value = self._is_use_image_time.get()
                 self._image_manager.update_use_image_time(file_name, value)
 
@@ -250,8 +250,22 @@ class GUI:
         self._is_use_image_time.set(False)
         self._use_image_time_checkbox = tk.Checkbutton(
             self._insert_date_frame, text="Use Image Time", var=self._is_use_image_time
-        ).grid(column=13, row=0)
+        ).grid(column=12, row=0)
         self._is_use_image_time.trace("w", update_use_image_time)
+
+        def update_rotate_image(*ars):
+            cur_index = self._image_list_box.curIndex
+            if cur_index is not None:
+                file_name = self._image_list_box.get(cur_index)
+                value = self._is_rotate_image.get()
+                self._image_manager.update_rotate_image(file_name, value)
+
+        self._is_rotate_image = tk.BooleanVar()
+        self._is_rotate_image.set(False)
+        self._rotate_image_checkbox = tk.Checkbutton(
+            self._insert_date_frame, text="Rotate Image", var=self._is_rotate_image
+        ).grid(column=13, row=0)
+        self._is_rotate_image.trace("w", update_rotate_image)
 
     def _add_image(self, event=None):
         files = filedialog.askopenfilenames(parent=self._window, title="Choose image")
@@ -282,6 +296,7 @@ class GUI:
         self._minute_varialbe.set(cur_image_info["time"]["minute"])
         self._second_varialbe.set(cur_image_info["time"]["second"])
         self._is_use_image_time.set(cur_image_info["use_image_time"])
+        self._is_rotate_image.set(cur_image_info["rotate_image"])
 
     def _show_image(self):
         def resize_to_fit_height(img_width, img_height):
