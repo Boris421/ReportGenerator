@@ -60,15 +60,9 @@ class GUI:
         self._window.config(menu=self._main_menu)
         self._file_menu = tk.Menu(self._main_menu, tearoff=0)
         self._main_menu.add_cascade(label="File", menu=self._file_menu)
-        self._file_menu.add_command(
-            label="Save as Word report", command=self._save_report
-        )
-        self._file_menu.add_command(
-            label="Import data as json", command=self._import_data
-        )
-        self._file_menu.add_command(
-            label="Export data as json", command=self._export_data
-        )
+        self._file_menu.add_command(label="Save Report", command=self._save_report)
+        self._file_menu.add_command(label="Import Data", command=self._import_data)
+        self._file_menu.add_command(label="Export Data", command=self._export_data)
 
     def _create_frames(self):
         # arrange main frames
