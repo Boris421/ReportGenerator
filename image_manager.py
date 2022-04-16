@@ -13,6 +13,7 @@ class ImageManager:
             "second": "",
         },
         "use_image_time": False,
+        "rotate_image": False,
     }
 
     def __init__(self):
@@ -64,7 +65,7 @@ class ImageManager:
             for data in import_data:
                 tmp_data = {}
                 for key in data:
-                    if key in ["time", "use_image_time"]:
+                    if key in ["time", "use_image_time", "rotate_image"]:
                         tmp_data[key] = data[key]
                 organized_image_data[data["file_path"]] = tmp_data
         except:
@@ -79,3 +80,6 @@ class ImageManager:
 
     def update_report_title(self, title):
         self._report_title = title
+
+    def update_rotate_image(self, file_path, value):
+        self._image_data[file_path]["rotate_image"] = value

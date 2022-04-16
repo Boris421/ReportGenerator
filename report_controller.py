@@ -1,4 +1,6 @@
+import os
 import docx
+import tempfile
 from docx.shared import Cm, Pt
 from docx.oxml.ns import qn
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -100,10 +102,14 @@ class ReportController:
         for i in range(count):
             # 貼圖片
             pic_position = table.rows[i * 3].cells[0].paragraphs[0]
-            pic_position.add_run().add_picture(
-                self._image_data[start_index + i]["file_path"], height=Cm(8.5)
-            )
+            img_file_path = self._image_data[start_index + i]["file_path"]
+            is_rotate_image = self._image_data[start_index + i]["rotate_image"]
+            if is_rotate_image:
+                img_file_path = self.rotate_image(img_file_path)
+            pic_position.add_run().add_picture(img_file_path, height=Cm(8.5))
             pic_position.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            if is_rotate_image:
+                os.unlink(img_file_path)
 
             # 加時間
             datatime = self.get_datetime(self._image_data[start_index + i])
@@ -164,3 +170,16 @@ class ReportController:
             str_datetime = f"{year}年{month}月{day}日{hour}時{minute}分{second}秒"
 
         return str_datetime
+
+    def rotate_image(self, file_path):
+        """
+        Rotate image 90 degrees and save as a tempprary file.
+        Return temporary file name.
+        """
+        tmp_image = tempfile.NamedTemporaryFile(suffix=".png", delete=False, mode="w+")
+        img = Image.open(file_path)
+        img = img.rotate(90, expand=True)
+        img.save(tmp_image.name, "png")
+        tmp_image.close()
+
+        return tmp_image.name
