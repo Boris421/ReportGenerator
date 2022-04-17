@@ -1,5 +1,5 @@
 # Report Generator
-This is a tool to generate report as the following template.
+This is a tool to generate report as the following template.  
 **GUI**  
 ![GUI](doc/GUI.png)
 **Report template**  
