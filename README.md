@@ -1,8 +1,8 @@
 # Report Generator
 This is a tool to generate report as the following template.
-**GUI**
+**GUI**  
 ![GUI](doc/GUI.png)
-**Report template**
+**Report template**  
 ![Report template](doc/report_template.png)
 ## **How to use**
 1. Clone this repository
