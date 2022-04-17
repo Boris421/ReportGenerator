@@ -4,11 +4,15 @@ This is a tool to generate report as the following template.
 ![GUI](doc/GUI.png)
 **Report template**
 ![Report template](doc/report_template.png)
-## How to use
+## **How to use**
 1. Clone this repository
-2. install package  
-    ```python=
+2. Install package  
+    ```
     pip install -r requirements.txt
+    ```
+3. Start GUI
+    ```
+    python GUI.py
     ```
 
 ## **Features**
