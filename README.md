@@ -21,7 +21,7 @@ This is a tool to generate report as the following template.
 * Drag and drop to arrange images.
 ### Generate Report
 * Insert custom report title.
-* Insert image time to report. Menual key in image time or use image exif information.
+* Insert image time to report. Manual key in image time or use image exif information.
 * Rotate image with 90 degrees.
 * Auto insert number of image.
 ### Data
