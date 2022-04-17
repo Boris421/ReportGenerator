@@ -1,9 +1,18 @@
 # Report Generator
 This is a tool to generate report as the following template.
-![Report template](doc/report_template.png
- )
-## Features
-### Process Images  
+**GUI**
+![GUI](doc/GUI.png)
+**Report template**
+![Report template](doc/report_template.png)
+## How to use
+1. Clone this repository
+2. install package  
+    ```python=
+    pip install -r requirements.txt
+    ```
+
+## **Features**
+### Edit Images  
 * Add and delete images.
 * Drag and drop to arrange images.
 ### Generate Report
